@@ -2,34 +2,31 @@
 <html lang="bn">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>CyberHub — Hacker Style</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <div class="brand">
           <span class="dot"></span>
           <span>CyberHub</span>
         </div>
 
         <div class="actions">
-          <!-- Theme toggle -->
           <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
-            <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
             </svg>
-            <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+            <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none">
               <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM4.96 19.04l-1.41 1.41 1.8 1.79 1.41-1.41-1.8-1.79zM12 5a7 7 0 100 14 7 7 0 000-14zm7.04-1.96l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8zM13 23v-3h-2v3h2zm0-19V1h-2v3h2z"/>
             </svg>
           </button>
 
-          <!-- Mobile menu -->
           <button class="icon-btn hamburger" id="menuToggle" aria-label="Menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
             </svg>
           </button>
@@ -45,58 +42,55 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero container" id="home">
     <span class="pill"><span class="dot-neon"></span> Hacker Neon Theme</span>
     <h1>সিম্পল ওয়েবসাইট — হেডার, মেনু, ফুটার</h1>
-    <p>ডার্ক হ্যাকার টাইপ স্টাইল এবং লাইট মোড টগল সাপোর্ট সহ রেসপন্সিভ ডিজাইন।</p>
+    <p>ডার্ক (হ্যাকার) স্টাইল ও লাইট মোড টগলসহ সম্পূর্ণ রেসপন্সিভ লেআউট—যেকোনো ডিভাইসে ঝকঝকে।</p>
     <div class="cta">
       <a class="btn" href="#apps">Get Started</a>
       <a class="btn ghost" href="#docs">Read Docs</a>
     </div>
   </section>
 
-  <!-- Cards -->
   <main class="container">
     <div class="grid" id="apps">
-      <div class="card">
+      <article class="card">
         <h3>Facebook 11 Lite</h3>
-        <p>এখানে ডাউনলোড লিংক দিন।</p>
-      </div>
-      <div class="card">
+        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
+      </article>
+      <article class="card">
         <h3>Messenger 3</h3>
-        <p>এখানে ডাউনলোড লিংক দিন।</p>
-      </div>
-      <div class="card">
+        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
+      </article>
+      <article class="card">
         <h3>Other Applications</h3>
-        <p>আরও অ্যাপ যোগ করুন।</p>
-      </div>
+        <p>আরও অ্যাপ/টুলস যোগ করুন।</p>
+      </article>
     </div>
 
     <section class="grid" id="docs">
-      <div class="card" style="grid-column: span 12;">
+      <div class="card card-full">
         <h3>ডকুমেন্টেশন</h3>
-        <p>আপনার প্রোজেক্টের বিস্তারিত লিখুন।</p>
+        <p>এখানে ব্যবহারবিধি/রিলিজ নোট লিখুন।</p>
       </div>
     </section>
 
     <section class="grid" id="contact">
-      <div class="card" style="grid-column: span 12;">
+      <div class="card card-full">
         <h3>যোগাযোগ</h3>
         <p>ইমেইল: you@example.com • টেলিগ্রাম: @your_handle</p>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container foot-inner">
       <div class="tiny">© <span id="year"></span> CyberHub. All rights reserved.</div>
-      <div class="foot-links tiny">
+      <nav class="foot-links tiny">
         <a href="#privacy">Privacy</a>
         <a href="#terms">Terms</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
 
