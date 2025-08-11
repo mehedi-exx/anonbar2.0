@@ -164,3 +164,15 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+
+/* --- Ensure header icons visible in both themes --- */
+header .icon-btn, header .icon-btn svg { color: var(--fg, #e6edf3); fill: currentColor; stroke: currentColor; }
+header .brand { color: var(--fg, #e6edf3); }
+
+.grid-3 { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; }
+.card { border: 1px solid var(--border, #1f2a2e); border-radius: 12px; background: var(--surface, #0f1416); }
+.card-body { padding: 1rem; }
+.btn { padding: .6rem 1rem; border-radius: 10px; border:1px solid var(--border, #1f2a2e); text-decoration:none; display:inline-block }
+.btn:hover { transform: translateY(-1px); }
+.muted { opacity:.75; }

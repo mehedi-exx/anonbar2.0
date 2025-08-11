@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Messenger Collection — CPbOX</title>
+  <title>Facebook Lite Collection — CPbOX</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,8 +19,8 @@
         </button>
         <ul id="menu" class="menu">
           <li><a href="index.html">Home</a></li>
-          <li><a href="fb11ite.html">FB Lite</a></li>
-          <li><a class="active" href="Messenger3.html">Messenger</a></li>
+          <li><a class="active" href="fb11ite.html">FB Lite</a></li>
+          <li><a href="Messenger3.html">Messenger 3</a></li>
           <li><a href="Allapk.html">All APK</a></li>
         </ul>
         <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
@@ -33,7 +33,7 @@
 
   <main class="container">
     <section>
-      <h1 class="page-title">Messenger Versions</h1>
+      <h1 class="page-title">Facebook Lite Versions (Lite-1 ➜ Lite-11)</h1>
       <p class="muted">নীচে প্রতিটি ভার্সনের জন্য আলাদা বক্স ও ডাউনলোড বাটন আছে। বাটনে ক্লিক করলে ৫ সেকেন্ড কাউন্টডাউন শেষে অটো-ডাউনলোড হবে।</p>
     </section>
 
@@ -62,24 +62,32 @@
 
   <script src="script.js"></script>
   <script>
-  // ------- Page specific JS for Messenger3.html -------
+  // ------- Page specific JS for fb11ite.html -------
   // Data: version name and download links
   const versions = [
-    { name: 'Messenger (Official Play Store)', link: 'https://play.google.com/store/apps/details?id=com.facebook.orca' },
-    { name: 'Messenger 2', link: '/downloads/messenger-2.apk' },
-    { name: 'Messenger 3', link: '/downloads/messenger-3.apk' },
+    { name: 'Lite-1 (Official Play Store)', link: 'https://play.google.com/store/apps/details?id=com.facebook.lite' },
+    { name: 'Lite-2', link: '/downloads/fb-lite-2.apk' },
+    { name: 'Lite-3', link: '/downloads/fb-lite-3.apk' },
+    { name: 'Lite-4', link: '/downloads/fb-lite-4.apk' },
+    { name: 'Lite-5', link: '/downloads/fb-lite-5.apk' },
+    { name: 'Lite-6', link: '/downloads/fb-lite-6.apk' },
+    { name: 'Lite-7', link: '/downloads/fb-lite-7.apk' },
+    { name: 'Lite-8', link: '/downloads/fb-lite-8.apk' },
+    { name: 'Lite-9', link: '/downloads/fb-lite-9.apk' },
+    { name: 'Lite-10', link: '/downloads/fb-lite-10.apk' },
+    { name: 'Lite-11', link: '/downloads/fb-lite-11.apk' },
   ];
 
   // Build cards
   const cardsWrap = document.getElementById('cards');
-  cardsWrap.classList.add('grid-3');
-  versions.forEach((v) => {
+  cardsWrap.classList.add('grid-3'); // use 3-column layout if theme supports
+  versions.forEach((v, idx) => {
     const card = document.createElement('article');
     card.className = 'card';
     card.innerHTML = `
       <div class="card-body">
         <h3>${v.name}</h3>
-        <p class="muted">লাইটওয়েট মেসেঞ্জার ভ্যারিয়েন্ট।</p>
+        <p class="muted">লাইটওয়েট ফেসবুক লাইট ভ্যারিয়েন্ট।</p>
         <div class="actions">
           <a href="#" class="btn download-btn" data-link="${v.link}">ডাউনলোড</a>
         </div>
@@ -120,6 +128,7 @@
   }
 
   function startDownload() {
+    // trigger download
     window.location.href = targetLink;
     closeModal();
   }
@@ -135,12 +144,14 @@
   downloadNowBtn.addEventListener('click', startDownload);
   cancelBtn.addEventListener('click', closeModal);
 
+  // Close modal on Esc
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
   </script>
 
   <style>
+  /* Page-local additions that follow theme tokens */
   .grid-3 { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 

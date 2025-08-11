@@ -1,12 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allapk</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>All APK — CPbOX</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Allapk Page</h1>
-    <p>Content for Allapk goes here.</p>
+  <header>
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>CPbOX</span>
+        </div>
+        <button id="menuToggle" class="icon-btn" aria-label="Open Menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <ul id="menu" class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="fb11lite.html">FB Lite</a></li>
+          <li><a href="messenger3.html">Messenger</a></li>
+          <li><a class="active" href="Allapk.html">All APK</a></li>
+        </ul>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
+          <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+          <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.64 5.64 4.22 4.22m15.56 15.56-1.42-1.42M18.36 5.64l1.42-1.42M6.34 18.36l-1.42 1.42" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button id="langToggle" class="icon-btn" aria-label="Toggle Language">EN/BN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1 class="page-title">All APK</h1>
+      <p class="muted">তোমার সব অ্যাপ প্যাকেজ এখানে যুক্ত করো।</p>
+      <div style="margin:.5rem 0 1rem"><a id="backBtn" class="btn btn-ghost" href="index.html" data-i18n="back">পিছনে</a></div>
+    </section>
+
+    <section class="grid grid-3" id="apk-list">
+      <!-- Add your APK cards here -->
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="muted">© CPbOX</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

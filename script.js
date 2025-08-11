@@ -37,3 +37,26 @@ menuToggle.addEventListener('click', () => {
 menu.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => menu.classList.remove('open'));
 });
+
+
+// --- Simple i18n (BN/EN) ---
+const i18nDict = {
+  en: { open: 'Open', download: 'Download', back: 'Back', preparing: 'Preparing your download…', seconds: 'seconds left' },
+  bn: { open: 'খুলো', download: 'ডাউনলোড', back: 'পিছনে', preparing: 'ডাউনলোড প্রস্তুত হচ্ছে…', seconds: 'সেকেন্ড বাকি' }
+};
+const langToggle = document.getElementById('langToggle');
+function setLang(l){
+  localStorage.setItem('lang', l);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const pair = i18nDict[l]?.[key];
+    if (pair) el.textContent = pair + (el.textContent.includes('/') ? '' : '');
+  });
+}
+if (langToggle){
+  langToggle.addEventListener('click', ()=>{
+    const cur = localStorage.getItem('lang') || 'bn';
+    setLang(cur === 'bn' ? 'en' : 'bn');
+  });
+  setLang(localStorage.getItem('lang') || 'bn');
+}
