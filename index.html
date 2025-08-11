@@ -3,174 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CyberHub — Simple Hacker Style</title>
-  <meta name="description" content="Simple website with header, menu, footer and hacker neon style with light/dark mode." />
-  <style>
-    /* ---------- CSS Variables ---------- */
-    :root {
-      --bg: #0b0f10;
-      --bg-soft: #0f1417;
-      --text: #e6f1ff;
-      --muted: #9fb0c0;
-      --neon: #39ff14;         /* হ্যাকার টাইপ নীয়ন সবুজ */
-      --neon-soft: #2bff1466;  /* glow */
-      --card: #11171a;
-      --border: #1c242a;
-      --link: #9dffcc;
-      --shadow: 0 0 22px var(--neon-soft), 0 0 4px var(--neon-soft);
-    }
-
-    /* Light theme overrides */
-    :root.light {
-      --bg: #ffffff;
-      --bg-soft: #f6faf7;
-      --text: #0a0b0c;
-      --muted: #4a575f;
-      --neon: #16a34a;         /* লাইটে একটু নরম সবুজ */
-      --neon-soft: #16a34a44;
-      --card: #ffffff;
-      --border: #e4efe7;
-      --link: #0d9488;
-      --shadow: 0 0 0 transparent, 0 0 0 transparent;
-    }
-
-    /* ---------- Base Reset ---------- */
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(1200px 600px at 20% -10%, #10321a 0%, transparent 55%) no-repeat,
-                  radial-gradient(800px 400px at 120% 10%, #0a2816 0%, transparent 50%) no-repeat,
-                  var(--bg);
-      color: var(--text);
-      font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-    }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ---------- Header ---------- */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(10px);
-      background: color-mix(in oklab, var(--bg) 80%, transparent);
-      border-bottom: 1px solid var(--border);
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 800; letter-spacing: .5px;
-    }
-    .brand .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--neon); box-shadow: var(--shadow);
-    }
-    .brand span {
-      font-size: 18px;
-      text-shadow: 0 0 6px var(--neon-soft);
-    }
-
-    /* Menu */
-    .menu { display: flex; gap: 18px; align-items: center; }
-    .menu a {
-      padding: 8px 10px; border-radius: 10px; color: var(--text);
-    }
-    .menu a.active, .menu a:hover {
-      background: linear-gradient( to right, color-mix(in oklab, var(--neon) 20%, transparent), transparent );
-      border: 1px solid color-mix(in oklab, var(--neon) 40%, var(--border));
-      box-shadow: var(--shadow);
-    }
-
-    /* Theme toggle + mobile menu */
-    .actions { display: flex; align-items: center; gap: 8px; }
-    .icon-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px; border-radius: 12px;
-      background: var(--bg-soft); border: 1px solid var(--border); color: var(--text);
-      cursor: pointer;
-    }
-    .icon-btn:hover { box-shadow: var(--shadow); border-color: color-mix(in oklab, var(--neon) 40%, var(--border)); }
-    .hamburger { display: none; }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      padding: 64px 0 28px;
-      border-bottom: 1px dashed var(--border);
-      background:
-        radial-gradient(600px 200px at 50% -10%, color-mix(in oklab, var(--neon) 8%, transparent), transparent 70%) no-repeat;
-    }
-    .hero h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: .3px; }
-    .hero p { margin: 0; color: var(--muted); max-width: 760px; }
-    .cta {
-      margin-top: 18px; display: inline-flex; gap: 10px; flex-wrap: wrap;
-    }
-    .btn {
-      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
-      background: linear-gradient( to bottom right, color-mix(in oklab, var(--neon) 12%, var(--card)), var(--card) );
-      color: var(--text); text-decoration: none; font-weight: 600;
-      box-shadow: var(--shadow);
-    }
-    .btn.ghost {
-      background: var(--bg-soft); box-shadow: none;
-    }
-
-    /* ---------- Cards ---------- */
-    .grid {
-      display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr);
-      padding: 28px 0 44px;
-    }
-    .card {
-      grid-column: span 4; background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 18px; transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-    .card h3 { margin: 0 0 6px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); }
-
-    /* ---------- Footer ---------- */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 20px 0 36px; color: var(--muted);
-      background: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--bg) 85%, #000));
-    }
-    .foot-inner {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
-    }
-    .foot-links { display: flex; gap: 14px; flex-wrap: wrap; }
-    .tiny { font-size: 12px; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 900px) {
-      .card { grid-column: span 6; }
-    }
-    @media (max-width: 640px) {
-      .hamburger { display: inline-flex; }
-      .menu { display: none; position: absolute; top: 64px; left: 0; right: 0;
-              flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px; }
-      .menu.open { display: flex; }
-      .card { grid-column: span 12; }
-      .hero h1 { font-size: 28px; }
-    }
-
-    /* ---------- Utility ---------- */
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border);
-      background: color-mix(in oklab, var(--neon) 8%, var(--bg-soft));
-      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--neon) 18%, transparent);
-      color: var(--text); font-weight: 600;
-    }
-    .dot-neon { width: 6px; height: 6px; border-radius: 50%; background: var(--neon); box-shadow: var(--shadow); }
-  </style>
+  <title>CyberHub — Hacker Style</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="container">
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav">
         <div class="brand">
           <span class="dot"></span>
           <span>CyberHub</span>
@@ -178,19 +18,18 @@
 
         <div class="actions">
           <!-- Theme toggle -->
-          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle Light/Dark">
-            <!-- Sun/Moon SVG changes via JS -->
-            <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+            <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
             </svg>
-            <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none">
+            <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none">
               <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM4.96 19.04l-1.41 1.41 1.8 1.79 1.41-1.41-1.8-1.79zM12 5a7 7 0 100 14 7 7 0 000-14zm7.04-1.96l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8zM13 23v-3h-2v3h2zm0-19V1h-2v3h2z"/>
             </svg>
           </button>
 
-          <!-- Mobile menu button -->
+          <!-- Mobile menu -->
           <button class="icon-btn hamburger" id="menuToggle" aria-label="Menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
             </svg>
           </button>
@@ -206,38 +45,38 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero container" id="home">
     <span class="pill"><span class="dot-neon"></span> Hacker Neon Theme</span>
     <h1>সিম্পল ওয়েবসাইট — হেডার, মেনু, ফুটার</h1>
-    <p>এই টেমপ্লেটটা আপনি যেভাবে চান সেভাবে কাস্টমাইজ করতে পারবেন। ডিফল্ট ডার্ক (হ্যাকার) স্টাইল, সাথে লাইট মোড—এক ক্লিকে টগল।</p>
+    <p>ডার্ক হ্যাকার টাইপ স্টাইল এবং লাইট মোড টগল সাপোর্ট সহ রেসপন্সিভ ডিজাইন।</p>
     <div class="cta">
       <a class="btn" href="#apps">Get Started</a>
       <a class="btn ghost" href="#docs">Read Docs</a>
     </div>
   </section>
 
-  <!-- Cards/Grid -->
+  <!-- Cards -->
   <main class="container">
     <div class="grid" id="apps">
       <div class="card">
         <h3>Facebook 11 Lite</h3>
-        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
+        <p>এখানে ডাউনলোড লিংক দিন।</p>
       </div>
       <div class="card">
         <h3>Messenger 3</h3>
-        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
+        <p>এখানে ডাউনলোড লিংক দিন।</p>
       </div>
       <div class="card">
         <h3>Other Applications</h3>
-        <p>আরও অ্যাপ/টুলসের জন্য কার্ড যোগ করুন।</p>
+        <p>আরও অ্যাপ যোগ করুন।</p>
       </div>
     </div>
 
     <section class="grid" id="docs">
       <div class="card" style="grid-column: span 12;">
         <h3>ডকুমেন্টেশন</h3>
-        <p>এই সেকশনে আপনার প্রোজেক্টের গাইডলাইন, ব্যবহারবিধি বা আপডেট লিখতে পারেন।</p>
+        <p>আপনার প্রোজেক্টের বিস্তারিত লিখুন।</p>
       </div>
     </section>
 
@@ -261,48 +100,6 @@
     </div>
   </footer>
 
-  <!-- ---------- JS: Theme + Menu ---------- -->
-  <script>
-    (function() {
-      const root = document.documentElement;
-      const themeToggle = document.getElementById('themeToggle');
-      const iconMoon = document.getElementById('iconMoon');
-      const iconSun  = document.getElementById('iconSun');
-      const menuToggle = document.getElementById('menuToggle');
-      const menu = document.getElementById('menu');
-      const yearEl = document.getElementById('year');
-
-      // year
-      yearEl.textContent = new Date().getFullYear();
-
-      // Initial theme: from localStorage or prefers-color-scheme
-      const saved = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      if (saved === 'light' || (!saved && prefersLight)) {
-        root.classList.add('light');
-        iconMoon.style.display = 'none';
-        iconSun .style.display = 'block';
-      }
-
-      // Toggle theme
-      themeToggle.addEventListener('click', () => {
-        root.classList.toggle('light');
-        const light = root.classList.contains('light');
-        localStorage.setItem('theme', light ? 'light' : 'dark');
-        iconMoon.style.display = light ? 'none' : 'block';
-        iconSun .style.display = light ? 'block' : 'none';
-      });
-
-      // Mobile menu
-      menuToggle?.addEventListener('click', () => {
-        menu.classList.toggle('open');
-      });
-
-      // Close menu after click (mobile UX)
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => menu.classList.remove('open'));
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
