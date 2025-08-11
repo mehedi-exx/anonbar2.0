@@ -1,322 +1,308 @@
-<!DOCTYPE html><html lang="bn">
+<!doctype html>
+<html lang="bn">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cyber Tools & Resources</title>
-  <meta name="description" content="শিক্ষামূলক সাইবার সিকিউরিটি রিসোর্স ও অ্যাপ গ্যালারি (আইনসম্মত)। GitHub Pages এ রান করে।" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='48' fill='%2300d3a7'/%3E%3Cpath d='M76 160l52-96 52 96H76z' fill='white'/%3E%3C/svg%3E" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CyberHub — Simple Hacker Style</title>
+  <meta name="description" content="Simple website with header, menu, footer and hacker neon style with light/dark mode." />
   <style>
+    /* ---------- CSS Variables ---------- */
     :root {
-      --bg: #0b1220;
-      --panel: #10192c;
-      --text: #e8eef8;
-      --muted: #a6b3c6;
-      --accent: #3dd0ac;
-      --border: #1d2a44;
-      --shadow: 0 10px 28px rgba(0,0,0,.25);
+      --bg: #0b0f10;
+      --bg-soft: #0f1417;
+      --text: #e6f1ff;
+      --muted: #9fb0c0;
+      --neon: #39ff14;         /* হ্যাকার টাইপ নীয়ন সবুজ */
+      --neon-soft: #2bff1466;  /* glow */
+      --card: #11171a;
+      --border: #1c242a;
+      --link: #9dffcc;
+      --shadow: 0 0 22px var(--neon-soft), 0 0 4px var(--neon-soft);
     }
+
+    /* Light theme overrides */
     :root.light {
-      --bg: #f7fafc;
-      --panel: #ffffff;
-      --text: #0b1324;
-      --muted: #5c6b82;
-      --accent: #0ea5e9;
-      --border: #e6edf5;
-      --shadow: 0 8px 20px rgba(2, 6, 23, .08);
+      --bg: #ffffff;
+      --bg-soft: #f6faf7;
+      --text: #0a0b0c;
+      --muted: #4a575f;
+      --neon: #16a34a;         /* লাইটে একটু নরম সবুজ */
+      --neon-soft: #16a34a44;
+      --card: #ffffff;
+      --border: #e4efe7;
+      --link: #0d9488;
+      --shadow: 0 0 0 transparent, 0 0 0 transparent;
     }
+
+    /* ---------- Base Reset ---------- */
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Bengali, Noto Sans, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 600px at 20% -10%, #10321a 0%, transparent 55%) no-repeat,
+                  radial-gradient(800px 400px at 120% 10%, #0a2816 0%, transparent 50%) no-repeat,
+                  var(--bg);
+      color: var(--text);
+      font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
     }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1100px, 94%); margin: 0 auto; }
-    /* Header */
-    header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(6px);
-      background: color-mix(in hsl, var(--bg) 85%, transparent);
-      border-bottom: 1px solid var(--border); z-index: 40; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
     .nav {
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
-    .brand-badge { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 12px; background: var(--accent); color: #00201a; font-weight: 900; box-shadow: var(--shadow); }
-    .menu { display: flex; gap: 18px; justify-content: center; }
-    .menu a { padding: 8px 10px; border-radius: 10px; color: var(--muted); }
-    .menu a.active, .menu a:hover { color: var(--text); background: color-mix(in hsl, var(--panel) 85%, transparent); }
-    .actions { display: flex; gap: 10px; justify-content: end; align-items: center; }
-    .btn, button.btn { padding: 10px 14px; border: 1px solid var(--border); background: var(--panel); color: var(--text);
-      border-radius: 12px; cursor: pointer; transition: transform .06s ease, filter .2s ease; box-shadow: var(--shadow); }
-    .btn:hover { transform: translateY(-1px); }
-    .btn.primary { background: linear-gradient(180deg, color-mix(in hsl, var(--accent) 92%, #fff 0%), var(--accent)); color: #06221b; border-color: transparent; font-weight: 700; }
-    .toggle { display: inline-flex; gap: 8px; align-items: center; }
-    .toggle input { display: none; }
-    .toggle .thumb { width: 46px; height: 28px; border-radius: 999px; background: var(--panel); border: 1px solid var(--border); position: relative; }
-    .toggle .thumb::after { content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; background: var(--text); border-radius: 50%; transition: left .2s ease; }
-    .toggle input:checked + .thumb::after { left: 22px; }/* Hero */
-.hero { padding: 36px 0 10px; }
-.hero-grid { display: grid; gap: 18px; grid-template-columns: 1.5fr 1fr; }
-.hero-card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
-.hero h1 { font-size: clamp(26px, 3.2vw, 38px); margin: 0 0 10px; letter-spacing: .2px; }
-.hero p { color: var(--muted); margin: 0 0 18px; }
-.feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.feature { background: color-mix(in hsl, var(--panel) 92%, transparent); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: grid; gap: 10px; }
-.feature h3 { margin: 0; font-size: 18px; }
-.feature small { color: var(--muted); }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; letter-spacing: .5px;
+    }
+    .brand .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--neon); box-shadow: var(--shadow);
+    }
+    .brand span {
+      font-size: 18px;
+      text-shadow: 0 0 6px var(--neon-soft);
+    }
 
-/* Apps */
-section { padding: 18px 0 32px; }
-.section-head { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin: 4px 0 12px; }
-.section-head h2 { margin: 0; font-size: 22px; }
-.section-head p { margin: 0; color: var(--muted); }
-.tools { display: flex; gap: 8px; flex-wrap: wrap; }
-.search { flex: 1 1 260px; display: flex; gap: 8px; }
-.search input { flex: 1; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 14px; display: grid; align-content: start; gap: 10px; box-shadow: var(--shadow); }
-.badge { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; padding: 6px 8px; border-radius: 999px; background: color-mix(in hsl, var(--panel) 90%, transparent); border: 1px solid var(--border); color: var(--muted); }
-.meta { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
+    /* Menu */
+    .menu { display: flex; gap: 18px; align-items: center; }
+    .menu a {
+      padding: 8px 10px; border-radius: 10px; color: var(--text);
+    }
+    .menu a.active, .menu a:hover {
+      background: linear-gradient( to right, color-mix(in oklab, var(--neon) 20%, transparent), transparent );
+      border: 1px solid color-mix(in oklab, var(--neon) 40%, var(--border));
+      box-shadow: var(--shadow);
+    }
 
-/* Footer */
-footer { padding: 24px 0 40px; border-top: 1px solid var(--border); color: var(--muted); }
-footer .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center; }
+    /* Theme toggle + mobile menu */
+    .actions { display: flex; align-items: center; gap: 8px; }
+    .icon-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 12px;
+      background: var(--bg-soft); border: 1px solid var(--border); color: var(--text);
+      cursor: pointer;
+    }
+    .icon-btn:hover { box-shadow: var(--shadow); border-color: color-mix(in oklab, var(--neon) 40%, var(--border)); }
+    .hamburger { display: none; }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .feature-cards { grid-template-columns: 1fr; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .menu { display: none; }
-}
-@media (max-width: 560px) {
-  .grid { grid-template-columns: 1fr; }
-  .actions .btn { padding: 9px 12px; }
-}
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 64px 0 28px;
+      border-bottom: 1px dashed var(--border);
+      background:
+        radial-gradient(600px 200px at 50% -10%, color-mix(in oklab, var(--neon) 8%, transparent), transparent 70%) no-repeat;
+    }
+    .hero h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: .3px; }
+    .hero p { margin: 0; color: var(--muted); max-width: 760px; }
+    .cta {
+      margin-top: 18px; display: inline-flex; gap: 10px; flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: linear-gradient( to bottom right, color-mix(in oklab, var(--neon) 12%, var(--card)), var(--card) );
+      color: var(--text); text-decoration: none; font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+    .btn.ghost {
+      background: var(--bg-soft); box-shadow: none;
+    }
 
+    /* ---------- Cards ---------- */
+    .grid {
+      display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr);
+      padding: 28px 0 44px;
+    }
+    .card {
+      grid-column: span 4; background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px; transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 36px; color: var(--muted);
+      background: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--bg) 85%, #000));
+    }
+    .foot-inner {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .foot-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .tiny { font-size: 12px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .card { grid-column: span 6; }
+    }
+    @media (max-width: 640px) {
+      .hamburger { display: inline-flex; }
+      .menu { display: none; position: absolute; top: 64px; left: 0; right: 0;
+              flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px; }
+      .menu.open { display: flex; }
+      .card { grid-column: span 12; }
+      .hero h1 { font-size: 28px; }
+    }
+
+    /* ---------- Utility ---------- */
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--neon) 8%, var(--bg-soft));
+      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--neon) 18%, transparent);
+      color: var(--text); font-weight: 600;
+    }
+    .dot-neon { width: 6px; height: 6px; border-radius: 50%; background: var(--neon); box-shadow: var(--shadow); }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
-      <nav class="nav" aria-label="প্রধান নেভিগেশন">
-        <div class="brand" aria-label="ব্র্যান্ড">
-          <span class="brand-badge" aria-hidden="true">CT</span>
-          <span>Cyber Tools</span>
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>CyberHub</span>
         </div>
-        <div class="menu" role="menubar">
-          <a href="#home" role="menuitem" class="active">হোম</a>
-          <a href="#apps" role="menuitem">অ্যাপস</a>
-          <a href="#tutorials" role="menuitem">টিউটোরিয়াল</a>
-          <a href="#contact" role="menuitem">যোগাযোগ</a>
-        </div>
+
         <div class="actions">
-          <label class="toggle" title="ডার্ক / লাইট মোড">
-            <input id="themeToggle" type="checkbox" aria-label="থিম টগল" />
-            <span class="thumb" aria-hidden="true"></span>
-          </label>
-          <a class="btn" href="#apps">অ্যাপস দেখুন</a>
+          <!-- Theme toggle -->
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle Light/Dark">
+            <!-- Sun/Moon SVG changes via JS -->
+            <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
+            </svg>
+            <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none">
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM4.96 19.04l-1.41 1.41 1.8 1.79 1.41-1.41-1.8-1.79zM12 5a7 7 0 100 14 7 7 0 000-14zm7.04-1.96l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8zM13 23v-3h-2v3h2zm0-19V1h-2v3h2z"/>
+            </svg>
+          </button>
+
+          <!-- Mobile menu button -->
+          <button class="icon-btn hamburger" id="menuToggle" aria-label="Menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="menu" id="menu">
+          <a class="active" href="#home">Home</a>
+          <a href="#apps">Apps</a>
+          <a href="#docs">Docs</a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
     </div>
-  </header>  <main id="home" class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-card">
-          <h1>শিক্ষামূলক সাইবার সিকিউরিটি রিসোর্স</h1>
-          <p>এই সাইটটি শুধুমাত্র <strong>আইনসঙ্গত ও শিক্ষামূলক</strong> কনটেন্ট শেয়ারের জন্য। তৃতীয় পক্ষের মালিকানাধীন অ্যাপ/ফাইল প্রকাশের ক্ষেত্রে অবশ্যই তাদের <em>অফিশিয়াল সোর্সে</em> লিংক দিন।</p>
-          <div class="tools">
-            <a class="btn primary" href="#apps">অ্যাপ গ্যালারি</a>
-            <a class="btn" href="#tutorials">শুরুর গাইড</a>
-          </div>
-        </div>
-        <div class="feature-cards">
-          <article class="feature" aria-labelledby="feat1">
-            <div class="badge">🔒 অফিসিয়াল সোর্স</div>
-            <h3 id="feat1">ফিচারড: অফিসিয়াল মেসেজিং অ্যাপ</h3>
-            <small>নিরাপত্তার জন্য শুধুমাত্র প্রকাশকের অফিশিয়াল ডাউনলোড পেইজে লিঙ্ক করুন।</small>
-            <div class="tools">
-              <a class="btn" href="#" data-official="true">অফিশিয়াল ডাউনলোড</a>
-            </div>
-          </article>
-          <article class="feature" aria-labelledby="feat2">
-            <div class="badge">📦 রিলিজ হোস্টিং</div>
-            <h3 id="feat2">GitHub Releases দিয়ে ফাইল শেয়ার</h3>
-            <small>GitHub Pages এ সার্ভার নেই, তাই রিলিজ/Assets ব্যবহার করুন—ডাইরেক্ট লিংক দিন।</small>
-            <div class="tools">
-              <a class="btn" href="#how-to-release">কীভাবে করবেন</a>
-            </div>
-          </article>
-        </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container" id="home">
+    <span class="pill"><span class="dot-neon"></span> Hacker Neon Theme</span>
+    <h1>সিম্পল ওয়েবসাইট — হেডার, মেনু, ফুটার</h1>
+    <p>এই টেমপ্লেটটা আপনি যেভাবে চান সেভাবে কাস্টমাইজ করতে পারবেন। ডিফল্ট ডার্ক (হ্যাকার) স্টাইল, সাথে লাইট মোড—এক ক্লিকে টগল।</p>
+    <div class="cta">
+      <a class="btn" href="#apps">Get Started</a>
+      <a class="btn ghost" href="#docs">Read Docs</a>
+    </div>
+  </section>
+
+  <!-- Cards/Grid -->
+  <main class="container">
+    <div class="grid" id="apps">
+      <div class="card">
+        <h3>Facebook 11 Lite</h3>
+        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
       </div>
-    </section><section id="apps">
-  <div class="section-head">
-    <div>
-      <h2>অ্যাপ গ্যালারি</h2>
-      <p>নিচের তালিকা <code>apps.json</code> (বা এই ফাইলের ভেতরের ডেটা) এডিট করে আপডেট করুন।</p>
-    </div>
-    <div class="search" role="search">
-      <input id="q" type="search" placeholder="সার্চ করুন (নাম, ক্যাটাগরি)…" aria-label="অ্যাপ সার্চ" />
-      <button class="btn" id="clearBtn" aria-label="সার্চ মুছুন">ক্লিয়ার</button>
-    </div>
-  </div>
-  <div id="appGrid" class="grid" aria-live="polite"></div>
-</section>
-
-<section id="how-to-release">
-  <div class="section-head">
-    <div>
-      <h2>GitHub Pages + Releases গাইড</h2>
-      <p>ফাইল আপলোড করতে GitHub Releases ব্যবহার করুন, তারপর এখানে সেই লিংক যোগ করুন।</p>
-    </div>
-  </div>
-  <div class="card">
-    <ol>
-      <li>আপনার রেপোতে <strong>Releases</strong> ট্যাবে যান → <strong>Draft a new release</strong>.</li>
-      <li>ভার্সন/ট্যাগ দিন (যেমন <code>v1.0.0</code>), বর্ণনা লিখুন, তারপর <strong>Attach binaries</strong> এ আপনার বৈধ ফাইল আপলোড করুন।</li>
-      <li>Publish করুন। প্রতিটি ফাইলের ডাইরেক্ট <em>asset URL</em> পাবেন—সেটিই এখানে <code>downloadUrl</code> হিসেবে দিন।</li>
-    </ol>
-    <p style="margin:0;color:var(--muted)">⚠️ মালিকানাধীন/অননুমোদিত সফটওয়্যার কখনোই আপলোড করবেন না।</p>
-  </div>
-</section>
-
-<section id="tutorials">
-  <div class="section-head">
-    <div>
-      <h2>শুরুর টিউটোরিয়াল</h2>
-      <p>ওএসআই মডেল, বেসিক নেটওয়ার্কিং, এবং সেফ-টেস্টিং ল্যাব সেটআপের গাইড।</p>
-    </div>
-  </div>
-  <div class="grid">
-    <article class="card">
-      <h3>১) ল্যাব সেটআপ (আইনসঙ্গত)</h3>
-      <p>ভার্চুয়াল মেশিনে নিজস্ব টেস্ট-নেটওয়ার্ক কনফিগার করুন। রিয়েল সিস্টেমে অনুমতি ছাড়া টেস্ট করবেন না।</p>
-      <a class="btn" href="#">গাইড পড়ুন</a>
-    </article>
-    <article class="card">
-      <h3>২) নেটওয়ার্ক বেসিকস</h3>
-      <p>আইপি, পোর্ট, সাবনেটিং, ট্রাফিক অ্যানালাইসিস ইত্যাদি হাতে-কলমে।</p>
-      <a class="btn" href="#">শুরু করুন</a>
-    </article>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-head">
-    <div>
-      <h2>যোগাযোগ</h2>
-      <p>প্রশ্ন থাকলে লিখুন (ইমেইল/ফর্ম ইন্টিগ্রেশন প্রয়োজন হলে Netlify/Formspree মত সার্ভিস ব্যবহার করতে পারেন)।</p>
-    </div>
-  </div>
-  <div class="card">
-    <form id="contactForm" onsubmit="event.preventDefault(); alert('ধন্যবাদ! (ডেমো)');">
-      <div style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
-        <label>নাম
-          <input required style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--border);background:var(--panel);color:var(--text)" />
-        </label>
-        <label>ইমেইল
-          <input type="email" required style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--border);background:var(--panel);color:var(--text)" />
-        </label>
+      <div class="card">
+        <h3>Messenger 3</h3>
+        <p>এখানে ডাউনলোড/ডিটেইলস লিংক দিন।</p>
       </div>
-      <label>বার্তা
-        <textarea required rows="4" style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--border);background:var(--panel);color:var(--text)"></textarea>
-      </label>
-      <div class="tools" style="margin-top:8px">
-        <button class="btn primary" type="submit">পাঠান</button>
+      <div class="card">
+        <h3>Other Applications</h3>
+        <p>আরও অ্যাপ/টুলসের জন্য কার্ড যোগ করুন।</p>
       </div>
-    </form>
-  </div>
-</section>
-
-  </main>  <footer>
-    <div class="container row">
-      <small>© <span id="year"></span> Cyber Tools — শিক্ষা ও আইনসম্মত ব্যবহারের জন্য।</small>
-      <small style="text-align:right">থিম: ডার্ক/লাইট · বিল্ট ফর GitHub Pages</small>
     </div>
-  </footer>  <script>
-    // --- Theme Toggle (persist in localStorage) ---
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') { root.classList.add('light'); toggle.checked = true; }
-    toggle.addEventListener('change', () => {
-      root.classList.toggle('light', toggle.checked);
-      localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
-    });
 
-    // --- Year ---
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <section class="grid" id="docs">
+      <div class="card" style="grid-column: span 12;">
+        <h3>ডকুমেন্টেশন</h3>
+        <p>এই সেকশনে আপনার প্রোজেক্টের গাইডলাইন, ব্যবহারবিধি বা আপডেট লিখতে পারেন।</p>
+      </div>
+    </section>
 
-    // --- App Catalog (edit this array OR fetch apps.json) ---
-    const apps = [
-      {
-        name: 'Messenger (Official Link)',
-        version: 'Latest',
-        category: 'Communication',
-        description: 'প্রকাশকের অফিশিয়াল ডাউনলোড পেইজে নিয়ে যায়।',
-        downloadUrl: '#',
-        official: true
-      },
-      {
-        name: 'NetDiag CLI',
-        version: 'v1.3.2',
-        category: 'Networking',
-        description: 'নিজস্ব ল্যাবে নেটওয়ার্ক ডায়াগনস্টিক টুল।',
-        downloadUrl: '#',
-        official: false
-      },
-      {
-        name: 'HashCheck',
-        version: 'v2.0.0',
-        category: 'Security',
-        description: 'ফাইল ইন্টেগ্রিটি যাচাইয়ের ইউটিলিটি (SHA-256).',
-        downloadUrl: '#',
-        official: false
+    <section class="grid" id="contact">
+      <div class="card" style="grid-column: span 12;">
+        <h3>যোগাযোগ</h3>
+        <p>ইমেইল: you@example.com • টেলিগ্রাম: @your_handle</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-inner">
+      <div class="tiny">© <span id="year"></span> CyberHub. All rights reserved.</div>
+      <div class="foot-links tiny">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ---------- JS: Theme + Menu ---------- -->
+  <script>
+    (function() {
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const iconMoon = document.getElementById('iconMoon');
+      const iconSun  = document.getElementById('iconSun');
+      const menuToggle = document.getElementById('menuToggle');
+      const menu = document.getElementById('menu');
+      const yearEl = document.getElementById('year');
+
+      // year
+      yearEl.textContent = new Date().getFullYear();
+
+      // Initial theme: from localStorage or prefers-color-scheme
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      if (saved === 'light' || (!saved && prefersLight)) {
+        root.classList.add('light');
+        iconMoon.style.display = 'none';
+        iconSun .style.display = 'block';
       }
-    ];
 
-    // OPTIONAL: fetch from apps.json instead
-    // fetch('apps.json').then(r => r.json()).then(list => render(list)).catch(() => render(apps));
-    render(apps);
-
-    function render(list) {
-      const grid = document.getElementById('appGrid');
-      grid.innerHTML = '';
-      list.forEach(app => {
-        const el = document.createElement('article');
-        el.className = 'card';
-        el.innerHTML = `
-          <div class="badge">${app.official ? '✅ অফিসিয়াল' : '📁 রিলিজ অ্যাসেট'}</div>
-          <h3 style="margin:0">${escapeHtml(app.name)}</h3>
-          <div class="meta">
-            <span>ভার্সন: <strong>${escapeHtml(app.version)}</strong></span>
-            <span>·</span>
-            <span>${escapeHtml(app.category)}</span>
-          </div>
-          <p style="margin:0">${escapeHtml(app.description)}</p>
-          <div class="tools">
-            <a class="btn" href="${app.downloadUrl}" target="_blank" rel="noopener">ডাউনলোড</a>
-          </div>`;
-        grid.appendChild(el);
+      // Toggle theme
+      themeToggle.addEventListener('click', () => {
+        root.classList.toggle('light');
+        const light = root.classList.contains('light');
+        localStorage.setItem('theme', light ? 'light' : 'dark');
+        iconMoon.style.display = light ? 'none' : 'block';
+        iconSun .style.display = light ? 'block' : 'none';
       });
-    }
 
-    // --- Search/Filter ---
-    const q = document.getElementById('q');
-    const clearBtn = document.getElementById('clearBtn');
-    q.addEventListener('input', () => {
-      const term = q.value.trim().toLowerCase();
-      const filtered = apps.filter(a => (
-        a.name.toLowerCase().includes(term) ||
-        a.category.toLowerCase().includes(term) ||
-        a.description.toLowerCase().includes(term)
-      ));
-      render(filtered);
-    });
-    clearBtn.addEventListener('click', () => { q.value=''; render(apps); q.focus(); });
+      // Mobile menu
+      menuToggle?.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
 
-    function escapeHtml(str){
-      return str.replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[s]));
-    }
-  </script></body>
+      // Close menu after click (mobile UX)
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => menu.classList.remove('open'));
+      });
+    })();
+  </script>
+</body>
 </html>
