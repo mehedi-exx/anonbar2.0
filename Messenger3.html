@@ -9,25 +9,36 @@
 <body>
   <header>
     <div class="container">
-      <nav class="nav" aria-label="Primary"><button id="langToggle" class="icon-btn" aria-label="Toggle Language">EN/BN</button>
+      <nav class="nav" aria-label="Primary">
         <div class="brand">
           <span class="dot"></span>
           <span>CPbOX</span>
         </div>
-        <button id="menuToggle" class="icon-btn" aria-label="Open Menu" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        </button>
-        <ul id="menu" class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="fb11ite.html">FB Lite</a></li>
-          <li><a class="active" href="Messenger3.html">Messenger</a></li>
-          <li><a href="Allapk.html">All APK</a></li>
-        </ul>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
-          <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
-          <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.64 5.64 4.22 4.22m15.56 15.56-1.42-1.42M18.36 5.64l1.42-1.42M6.34 18.36l-1.42 1.42" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        </button>
-      </nav>
+
+        <div class="actions">
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+            <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
+            </svg>
+            <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM4.96 19.04l-1.41 1.41 1.8 1.79 1.41-1.41-1.8-1.79zM12 5a7 7 0 100 14 7 7 0 000-14zm7.04-1.96l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8zM13 23v-3h-2v3h2zm0-19V1h-2v3h2z"/>
+            </svg>
+          </button>
+
+          <button class="icon-btn hamburger" id="menuToggle" aria-label="Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="menu" id="menu">
+          <a class="active" href="#home">Home</a>
+          <a href="#apps">Apps</a>
+          <a href="#docs">Docs</a>
+          <a href="#contact">Contact</a>
+        </div>
+      <button id="langToggle" class="icon-btn" aria-label="Toggle Language">EN/BN</button></nav>
     </div>
   </header>
 
@@ -55,8 +66,13 @@
   </div>
 
   <footer>
-    <div class="container">
-      <p class="muted">© CPbOX</p>
+    <div class="container foot-inner">
+      <div class="tiny">© <span id="year"></span> CyberHub. All rights reserved.</div>
+      <nav class="foot-links tiny">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </footer>
 
